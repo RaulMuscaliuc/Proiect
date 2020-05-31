@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #2d4b8a;
+}
+a, .navbar-nav, .navbar-light .nav-link {
+    color: #0e0f12!important;
+}
+
+a:hover, .navbar-nav:hover, .navbar-light:hover .nav-link:hover {
+     color: white;
+}
+
+.navbar-brand {
+    font-size: 1.4em;
+    color: #0e0f12!important;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+.form-center {
+    position: absolute !important;
+    left: 25%;
+    right: 25%;
+}
+.nav-item {
+    a {
+        font-size: 1.4em !important;
+    }
+}
