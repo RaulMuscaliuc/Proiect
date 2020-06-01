@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import './Pacient.css'
 import {Col, Row} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 export default class Pacient extends React.Component {
 
@@ -47,6 +48,7 @@ export default class Pacient extends React.Component {
     }
 
     render() {
+        const id = this.props.match.params.id;
         const {seIncarca, nume, prenume, varsta, cnp, adresa, diagnostice, tratamente, alergii, recomandari,dateFiziologice, dateAmbientale } = this.state;
         if (seIncarca) {
             return <p align='center'>Se incarca...</p>
@@ -61,6 +63,13 @@ export default class Pacient extends React.Component {
             const nume = alergie.nume;
             return <li><p>{nume}</p></li>
         });
+
+        const dateA = {
+            lumina: dateAmbientale[dateAmbientale.length - 1].lumina ? "Da" : "Nu",
+            gaz: dateAmbientale[dateAmbientale.length - 1].gaz ? "Da" : "Nu",
+            umiditate: dateAmbientale[dateAmbientale.length - 1].umiditate ? "Da" : "Nu",
+            proximitate: dateAmbientale[dateAmbientale.length - 1].proximitate ? "Da" : "Nu"
+        };
 
         return (
             <div>
@@ -87,22 +96,6 @@ export default class Pacient extends React.Component {
                             </table>
                         </Col>
                         <Col>
-                            <h1>Diagnostice</h1>
-                            <table>
-                                <tr>
-                                    <ul>{listaDiagnostice}</ul>
-                                </tr>
-                            </table>
-                        </Col>
-                        <Col>
-                            <h1>Alergii</h1>
-                            <table>
-                                <tr>
-                                    <ul>{listaAlergii}</ul>
-                                </tr>
-                            </table>
-                        </Col>
-                        <Col>
                             <h1>Date fiziologice</h1>
                             <table>
                                 <tr>
@@ -115,17 +108,7 @@ export default class Pacient extends React.Component {
                                     </ul>
                                 </tr>
                                 <tr>
-                                    <button>Vezi grafic istoric</button>
-                                </tr>
-                            </table>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <h1>Date ambientale</h1>
-                            <table>
-                                <tr>
-                                    <td><b>Diagnostice: </b></td>
+                                    <Button onClick={() => this.props.history.push(id + "/grafice")}>Vezi grafic istoric</Button>
                                 </tr>
                             </table>
                         </Col>
@@ -133,7 +116,35 @@ export default class Pacient extends React.Component {
                             <h1>Tratamente</h1>
                             <table>
                                 <tr>
-                                    <td><b>Diagnostice: </b></td>
+                                    <Button>Vezi tratamente pacient</Button>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <Button>Tratament nou</Button>
+                                </tr>
+                            </table>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h1>Diagnostice</h1>
+                            <table>
+                                <tr>
+                                    <ul>{listaDiagnostice}</ul>
+                                </tr>
+                            </table>
+                        </Col>
+                        <Col>
+                            <h1>Date ambientale</h1>
+                            <table>
+                                <tr>
+                                    <ul>
+                                        <li><b>Lumina: </b> {dateA.lumina}</li>
+                                        <li><b>Temperatura: </b>{dateAmbientale[dateAmbientale.length - 1].temperatura}</li>
+                                        <li><b>Gaz: </b>{dateA.gaz}</li>
+                                        <li><b>Umiditate: </b>{dateA.umiditate}</li>
+                                        <li><b>Proximitate: </b>{dateA.proximitate}</li>
+                                    </ul>
                                 </tr>
                             </table>
                         </Col>
@@ -141,7 +152,21 @@ export default class Pacient extends React.Component {
                             <h1>Recomadari</h1>
                             <table>
                                 <tr>
-                                    <td><b>Diagnostice: </b></td>
+                                    <Button>Vezi recomandari pacient</Button>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <Button>Recomandare noua</Button>
+                                </tr>
+                            </table>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <h1>Alergii</h1>
+                            <table>
+                                <tr>
+                                    <ul>{listaAlergii}</ul>
                                 </tr>
                             </table>
                         </Col>

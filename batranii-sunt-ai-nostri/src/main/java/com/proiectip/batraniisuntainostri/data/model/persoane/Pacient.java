@@ -29,9 +29,9 @@ public class Pacient extends Persoana {
     @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<DateFiziologice> dateFiziologice;
 
-    @OneToOne
-    @JoinColumn(name = "date_ambientale_id")
-    private DateAmbientale dateAmbientale;
+    @OneToMany
+    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
+    private List<DateAmbientale> dateAmbientale;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medic_id")
@@ -84,11 +84,11 @@ public class Pacient extends Persoana {
         this.dateFiziologice = dateFiziologice;
     }
 
-    public DateAmbientale getDateAmbientale() {
+    public List<DateAmbientale> getDateAmbientale() {
         return dateAmbientale;
     }
 
-    public void setDateAmbientale(DateAmbientale dateAmbientale) {
+    public void setDateAmbientale(List<DateAmbientale> dateAmbientale) {
         this.dateAmbientale = dateAmbientale;
     }
 }
