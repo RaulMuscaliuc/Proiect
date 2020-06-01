@@ -1,7 +1,9 @@
 .margin-top {
   margin-top: 20px;
 }
-.container {
+.content {
   margin-left: 60px!important;
-  background-image: url("./images/bg1.jpg");
+  height: 820px;
+  background: #4a72c7;
+  width: auto!important;
 }

@@ -1,14 +1,12 @@
 import React from "react";
 import './Pacienti.css'
-import Pacient from "./Pacient";
 
 export default class Pacienti extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             seIncarca: true,
-            pacienti: [],
-            pacient: false
+            pacienti: []
         }
     }
 
@@ -20,36 +18,25 @@ export default class Pacienti extends React.Component {
             .then(data => this.setState({pacienti: data, seIncarca: false}));
     }
 
-    renderPacientInfo(pacientId) {
-        const {pacienti} = this.state;
-        const pacient = pacienti[pacientId - 1]
-        console.log(pacient.adresa);
-    }
-
     render() {
-        const {pacienti, seIncarca, pacient} = this.state;
+        const {pacienti, seIncarca} = this.state;
         if (seIncarca) {
             return <p>Se incarca...</p>
         }
-        var pacientView;
-        if(pacient) {
-             pacientView = (
-                <Pacient/>
-            )
-        }
+
         const listaPacienti = pacienti.map(pacient => {
             const numePacient = pacient.nume + ' ' + pacient.prenume;
             const id = pacient.id;
-            return <li onClick={() => pacient = true}><i>{numePacient}</i></li>
+            return <li><i><a href={'/pacienti/' + id} id={id}>{numePacient}</a></i></li>
 
         });
         return (
-            <div>
+            <div align='center'>
                 <div>
-                    <ol>{listaPacienti}</ol>
+                    <h1>Lista pacientilor</h1>
                 </div>
-                <div align='center'>
-                    {pacientView}
+                <div className="listaPacienti" >
+                    <ol>{listaPacienti}</ol>
                 </div>
             </div>
         )

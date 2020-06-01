@@ -9,9 +9,9 @@ export default class Footer extends Component {
 
         return (
             <Navbar fixed="bottom">
-                <Container>
+                <Container fluid>
                     <Col lg={12} className="text-center text-muted">
-                        <div>{fullYear}-{fullYear+1}</div>
+                        <div className={"antet"}>{fullYear}-{fullYear+1}</div>
                     </Col>
                 </Container>
             </Navbar>

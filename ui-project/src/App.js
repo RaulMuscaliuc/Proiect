@@ -4,13 +4,11 @@ import './App.css';
 import {Container, Row, Col} from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-import Welcome from './components/Welcome';
-import UserList from './components/UserList';
 import Footer from './components/footer/Footer';
 import Pacienti from "./components/pacienti/Pacienti";
 import { NavigationBar } from './components/navigation/NavigationBar';
 import Sidebar from "./components/navigation/side/Sidebar";
-import Pacient from "./components/pacienti/Pacient";
+import Pacient from "./components/pacienti/pacient/Pacient";
 
 export default function App() {
 
@@ -22,11 +20,12 @@ export default function App() {
         <Router>
             <NavigationBar/>
             <Sidebar/>
-            <Container>
+            <Container className={'content'} fluid>
                 <Row>
                     <Col lg={12} className={"margin-top"}>
                         <Switch>
-                            <Route path="/pacienti" component={Pacienti}/>
+                            <Route path="/pacienti" exact={true} component={Pacienti}/>
+                            <Route path="/pacienti/:id" exact={true} component={Pacient}/>
                         </Switch>
                     </Col>
                 </Row>
