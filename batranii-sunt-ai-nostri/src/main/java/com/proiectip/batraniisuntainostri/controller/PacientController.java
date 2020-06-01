@@ -22,6 +22,11 @@ public class PacientController {
         return ResponseEntity.ok(pacientService.getAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Pacient> gasestePacient(@PathVariable("id") String id) {
+        return ResponseEntity.ok(pacientService.getOne(Long.parseLong(id)));
+    }
+
     @PostMapping
     public ResponseEntity<Void> adaugaPacient(@RequestBody Pacient pacient) {
         pacientService.adaugaPacient(pacient);

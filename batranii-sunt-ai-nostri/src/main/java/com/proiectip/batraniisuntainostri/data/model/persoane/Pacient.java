@@ -25,9 +25,9 @@ public class Pacient extends Persoana {
     @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<Recomandare> recomandari;
 
-    @OneToOne
-    @JoinColumn(name = "date_fiziologice_id")
-    private DateFiziologice dateFiziologice;
+    @OneToMany
+    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
+    private List<DateFiziologice> dateFiziologice;
 
     @OneToOne
     @JoinColumn(name = "date_ambientale_id")
@@ -76,11 +76,11 @@ public class Pacient extends Persoana {
         this.recomandari = recomandari;
     }
 
-    public DateFiziologice getDateFiziologice() {
+    public List<DateFiziologice> getDateFiziologice() {
         return dateFiziologice;
     }
 
-    public void setDateFiziologice(DateFiziologice dateFiziologice) {
+    public void setDateFiziologice(List<DateFiziologice> dateFiziologice) {
         this.dateFiziologice = dateFiziologice;
     }
 
