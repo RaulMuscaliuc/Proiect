@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/pacienti")
@@ -18,16 +19,16 @@ public class PacientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Pacient>> getPacienti() {
-        return ResponseEntity.ok(pacientService.getAll());
+    public ResponseEntity<List<Pacient>> getPacienti() throws ExecutionException, InterruptedException {
+        return ResponseEntity.ok(pacientService.getAllFromFireBase());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pacient> gasestePacient(@PathVariable("id") String id) {
+    public ResponseEntity<Pacient> gasestePacient(@PathVariable("id") String id) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(pacientService.getOne(Long.parseLong(id)));
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<Void> adaugaPacient(@RequestBody Pacient pacient) {
         pacientService.adaugaPacient(pacient);
         return ResponseEntity.noContent().build();
@@ -42,5 +43,5 @@ public class PacientController {
     public ResponseEntity<Void> deletePacient(@PathVariable("id") String id) {
         pacientService.stergePacient(Long.parseLong(id));
         return ResponseEntity.noContent().build();
-    }
+    }*/
 }

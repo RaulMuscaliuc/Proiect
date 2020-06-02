@@ -4,23 +4,24 @@ import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "alergi")
 public class Alergie {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
-    @Column(name = "nume")
     private String nume;
 
-    @ManyToOne
-    private Pacient pacient;
+    private long pacient;
+
+    public long getPacient() {
+        return pacient;
+    }
 
     public long getId() {
         return id;
+    }
+
+    public void setPacient(long pacient) {
+        this.pacient = pacient;
     }
 
     public String getNume() {

@@ -4,40 +4,30 @@ import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "tratamente")
 public class Tratament {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
-    @ManyToOne
-    private Pacient pacient;
+    private long pacient;
 
-    @Column(name = "observatii_medic")
     private String observatiiMedic;
 
-    @Column(name = "observatii_ingrijitor")
     private String observatiiIngrijitor;
 
-    @Column(name = "ora_rezolvare")
     private int oraRezolvare;
 
-    @Column(name = "rezolvat")
     private boolean rezolvat;
-
-    public Pacient getPacient() {
-        return pacient;
-    }
-
-    public void setPacient(Pacient pacient) {
-        this.pacient = pacient;
-    }
 
     public long getId() {
         return id;
+    }
+
+    public long getPacient() {
+        return pacient;
+    }
+
+    public void setPacient(long pacient) {
+        this.pacient = pacient;
     }
 
     public String getObservatiiMedic() {

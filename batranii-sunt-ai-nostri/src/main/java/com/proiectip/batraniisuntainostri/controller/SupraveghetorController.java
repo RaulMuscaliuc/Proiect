@@ -19,8 +19,8 @@ public class SupraveghetorController {
         this.supraveghetorService = supraveghetorService;
     }
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity<List<Supraveghetor>> getSupraveghetori() {
         return ResponseEntity.ok(supraveghetorService.getAll());
-    }
+    }*/
 }

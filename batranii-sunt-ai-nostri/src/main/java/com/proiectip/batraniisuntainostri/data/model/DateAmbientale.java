@@ -4,35 +4,33 @@ import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "date_ambientale")
+
 public  class DateAmbientale {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
-    @ManyToOne
-    private Pacient pacient;
+    private long pacient;
 
-    @Column(name = "lumina")
     private boolean lumina;
 
-    @Column(name = "temperatura")
     private int temperatura;
 
-    @Column(name = "gaz")
     private boolean gaz;
 
-    @Column(name = "umiditate")
     private boolean umiditate;
 
-    @Column(name = "proximitate")
     private boolean proximitate;
 
     public long getId() {
         return id;
+    }
+
+    public long getPacient() {
+        return pacient;
+    }
+
+    public void setPacient(long pacient) {
+        this.pacient = pacient;
     }
 
     public boolean isLumina() {

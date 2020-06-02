@@ -1,3 +1,4 @@
+/*
 package com.proiectip.batraniisuntainostri.controller;
 
 import com.proiectip.batraniisuntainostri.data.model.persoane.Medic;
@@ -24,3 +25,4 @@ public class MedicController {
         return ResponseEntity.ok(medicService.getAll());
     }
 }
+*/

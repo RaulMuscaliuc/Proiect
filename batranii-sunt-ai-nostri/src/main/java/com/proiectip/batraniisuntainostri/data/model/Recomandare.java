@@ -4,14 +4,17 @@ import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "recomandari")
 public class Recomandare {
 
-    @Id
-    @GeneratedValue
     private long Id;
 
-    @ManyToOne
     private Pacient pacient;
+
+    public Pacient getPacient() {
+        return pacient;
+    }
+
+    public void setPacient(Pacient pacient) {
+        this.pacient = pacient;
+    }
 }

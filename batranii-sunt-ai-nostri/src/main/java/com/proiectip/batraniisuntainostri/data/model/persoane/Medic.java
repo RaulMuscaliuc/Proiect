@@ -6,14 +6,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-@Entity
-@Table(name = "medici")
 public class Medic extends Persoana {
 
-    @Column(name = "specialitate")
     private String specialitate;
 
-    @OneToMany
     private List<Pacient> pacienti;
 
     public Medic() {

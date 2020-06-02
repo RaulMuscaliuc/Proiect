@@ -4,28 +4,18 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 public class Persoana {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, updatable = false)
     private long id;
 
-    @Column(name = "nume")
     private String nume;
 
-    @Column(name = "prenume")
     private String prenume;
 
-    @Column(name = "varsta")
     private int varsta;
 
-    @Column(name = "cnp")
     private String cnp;
 
-    @Column(name = "adresa")
     private String adresa;
 
     public Persoana() {

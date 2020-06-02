@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/ambientale")
@@ -20,7 +21,7 @@ public class DateFiziologiceController {
     }
     
     @GetMapping("/{pacientId}")
-    public ResponseEntity<List<DateFiziologice>> gasesteDateAmbientale(@PathVariable("pacientId") String pacientId) {
+    public ResponseEntity<List<DateFiziologice>> gasesteDateAmbientale(@PathVariable("pacientId") String pacientId) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(dateFiziologiceService.gasesteDateFiziologice(Long.parseLong(pacientId)));
     }
 }

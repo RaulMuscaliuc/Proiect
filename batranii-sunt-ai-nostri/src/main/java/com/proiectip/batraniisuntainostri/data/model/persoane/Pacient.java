@@ -5,40 +5,49 @@ import com.proiectip.batraniisuntainostri.data.model.*;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "pacienti")
 public class Pacient extends Persoana {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<Diagnostic> diagnostice;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<Tratament> tratamente;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<Alergie> alergii;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<Recomandare> recomandari;
 
-    @OneToMany
-    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<DateFiziologice> dateFiziologice;
 
-    @OneToMany
-    @JoinColumn(name = "pacient_id", referencedColumnName = "id")
     private List<DateAmbientale> dateAmbientale;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "medic_id")
-    private Medic medic;
+    private long medic;
 
-    @OneToOne
-    private Ingrijitor ingrijitor;
+    private long ingrijitor;
+
+    private long supraveghetor;
+
+    public long getSupraveghetor() {
+        return supraveghetor;
+    }
+
+    public void setSupraveghetor(long supraveghetor) {
+        this.supraveghetor = supraveghetor;
+    }
+
+    public long getMedic() {
+        return medic;
+    }
+
+    public void setMedic(long medic) {
+        this.medic = medic;
+    }
+
+    public long getIngrijitor() {
+        return ingrijitor;
+    }
+
+    public void setIngrijitor(long ingrijitor) {
+        this.ingrijitor = ingrijitor;
+    }
 
     public Pacient() {
         super();
