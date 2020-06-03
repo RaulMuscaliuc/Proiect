@@ -152,11 +152,11 @@ export default class Pacient extends React.Component {
                             <h1>Recomandari</h1>
                             <table>
                                 <tr>
-                                    <Button>Vezi recomandari pacient</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/recomandari")}>Vezi recomandari pacient</Button>
                                 </tr>
                                 <br/>
                                 <tr>
-                                    <Button>Recomandare noua</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/recomandare")}>Recomandare noua</Button>
                                 </tr>
                             </table>
                         </Col>

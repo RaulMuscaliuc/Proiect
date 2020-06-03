@@ -17,6 +17,7 @@ public class RecomandareController {
         this.recomandareService = recomandareService;
     }
 
+    @CrossOrigin
     @GetMapping("/pacienti/{id}/recomandari")
     public ResponseEntity<List<Recomandare>> gasesteRecomandari(@PathVariable("id") String pacientId) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(recomandareService.gasesteRecomandari(Long.parseLong(pacientId)));

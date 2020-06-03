@@ -18,12 +18,14 @@ public class PacientController {
         this.pacientService = pacientService;
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<Pacient>> getPacienti(@RequestParam("role") String role,
                                                      @RequestParam("id") String id) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(pacientService.getAllFromFireBase(role, id));
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<Pacient> gasestePacient(@PathVariable("id") String id) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(pacientService.getOne(Long.parseLong(id)));

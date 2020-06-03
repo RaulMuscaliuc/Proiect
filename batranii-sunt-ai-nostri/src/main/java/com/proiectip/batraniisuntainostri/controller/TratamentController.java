@@ -17,11 +17,13 @@ public class TratamentController {
         this.tratamentService = tratamentService;
     }
 
+    @CrossOrigin
     @GetMapping("/pacienti/{id}/tratamente")
     public ResponseEntity<List<Tratament>> gasesteTratamente(@PathVariable("id") String pacientId) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(tratamentService.gasesteTratamente(Long.parseLong(pacientId)));
     }
 
+    @CrossOrigin
     @GetMapping("/tratamente/{id}")
     public ResponseEntity<Tratament> gasesteTratament(@PathVariable("id") String id) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(tratamentService.gasesteTratament(Long.parseLong(id)));
