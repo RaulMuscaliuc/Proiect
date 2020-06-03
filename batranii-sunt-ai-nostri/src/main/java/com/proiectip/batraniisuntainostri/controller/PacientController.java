@@ -19,8 +19,9 @@ public class PacientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Pacient>> getPacienti() throws ExecutionException, InterruptedException {
-        return ResponseEntity.ok(pacientService.getAllFromFireBase());
+    public ResponseEntity<List<Pacient>> getPacienti(@RequestParam("role") String role,
+                                                     @RequestParam("id") String id) throws ExecutionException, InterruptedException {
+        return ResponseEntity.ok(pacientService.getAllFromFireBase(role, id));
     }
 
     @GetMapping("/{id}")

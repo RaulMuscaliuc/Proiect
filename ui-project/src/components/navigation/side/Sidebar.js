@@ -19,16 +19,10 @@ class SideNav extends React.Component {
                     key: 1, /* Key is required, else console throws error. Does this please you Mr. Browser?! */
                 },
                 {
-                    path: '/about',
-                    name: 'About',
-                    css: 'fa fa-fw fa-clock',
-                    key: 2,
-                },
-                {
                     path: '/pacienti',
                     name: 'Lista pacienti',
                     css: 'fas fa-archive',
-                    key: 3,
+                    key: 2,
                 },
             ]
         }
@@ -39,18 +33,18 @@ class SideNav extends React.Component {
     };
 
     render() {
-        const {items, activePath} = this.state;
-
+        let role = "";
+        let id;
+        if(localStorage.length === 1) {
+            role = JSON.parse(localStorage.getItem('user')).role;
+            id = JSON.parse(localStorage.getItem('user')).id;
+        }
         return (
             <StyledSideNav className='sideBar'>
-                {
-                    items.map((item) => {
-                        return (
-                            <NavItem path={item.path} name={item.name} css={item.css} onItemClick={this.onItemClick}
-                                     active={item.path === activePath} key={item.key}/>
-                        )
-                    })
-                }
+                <NavItem path='/' name='Home' css='fa fa-fw fa-home' onItemClick={this.onItemClick} key='1'/>
+                <NavItem path={role === 'pacient' ? '/pacienti/' + id : '/pacienti'}
+                         name='Home' css='fas fa-archive' onItemClick={this.onItemClick} key='1'/>
+                )
             </StyledSideNav>
         );
     }

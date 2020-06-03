@@ -33,7 +33,7 @@ public class PacientService {
         this.tratamentService = tratamentService;
     }
 
-    public List<Pacient> getAllFromFireBase() throws ExecutionException, InterruptedException {
+    public List<Pacient> getAllFromFireBase(final String role, final String id) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         Iterable<DocumentReference> documentReferences= dbFirestore.collection("pacienti").listDocuments();
 
@@ -46,8 +46,25 @@ public class PacientService {
             Pacient pacient = null;
 
             if (document.exists()) {
-                pacient = document.toObject(Pacient.class);
-                pacienti.add(pacient);
+                pacient = Objects.requireNonNull(document.toObject(Pacient.class));
+                switch (role) {
+                    case "medic":
+                        if(pacient.getMedic() == Long.parseLong(id)) {
+                            pacienti.add(pacient);
+                        }
+                        break;
+                    case "supraveghetor":
+                        if(pacient.getSupraveghetor() == Long.parseLong(id)) {
+                            pacienti.add(pacient);
+                        }
+                        break;
+                    case "ingrijitor":
+                        if(pacient.getIngrijitor() == Long.parseLong(id)) {
+                            pacienti.add(pacient);
+                        }
+                        break;
+                }
+
             }
         }
 
