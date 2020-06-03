@@ -71,10 +71,10 @@ export default class Pacient extends React.Component {
         });
 
         const dateA = {
-            lumina: dateAmbientale[dateAmbientale.length - 1].lumina ? "Da" : "Nu",
-            gaz: dateAmbientale[dateAmbientale.length - 1].gaz ? "Da" : "Nu",
-            umiditate: dateAmbientale[dateAmbientale.length - 1].umiditate ? "Da" : "Nu",
-            proximitate: dateAmbientale[dateAmbientale.length - 1].proximitate ? "Da" : "Nu"
+            lumina: dateAmbientale[dateAmbientale.length - 1].lumina,
+            gaz: dateAmbientale[dateAmbientale.length - 1].gaz,
+            umiditate: dateAmbientale[dateAmbientale.length - 1].umiditate ,
+            proximitate: dateAmbientale[dateAmbientale.length - 1].proximitate
         };
 
         return (

@@ -7,6 +7,9 @@ public class Users {
     private String password;
     private String role;
 
+    public Users() {
+    }
+
     public long getId() {
         return id;
     }

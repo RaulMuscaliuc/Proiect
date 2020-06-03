@@ -22,12 +22,13 @@ export default class AdaugarePacient extends React.Component {
             cnp: "",
             ingrijitor: "",
             supraveghetor: "",
-            medic: localStorage.getItem("user").id
+            medic: 0
         }
     }
 
     render() {
         const {username, password, confirmPassword, nume, prenume, varsta, adresa, cnp, ingrijitor, supraveghetor, medic} = this.state;
+
 
         function inregistreaza() {
             axios({
@@ -45,7 +46,7 @@ export default class AdaugarePacient extends React.Component {
                     cnp: cnp,
                     ingrijitor: ingrijitor,
                     supraveghetor: supraveghetor,
-                    medic: medic
+                    medic: localStorage.getItem("user").id
 
                 }
             })

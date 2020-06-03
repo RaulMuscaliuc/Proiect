@@ -31,20 +31,8 @@ public class PacientController {
         return ResponseEntity.ok(pacientService.getOne(Long.parseLong(id)));
     }
 
-    /*@PostMapping
+    @PostMapping
     public ResponseEntity<Void> adaugaPacient(@RequestBody Pacient pacient) {
-        pacientService.adaugaPacient(pacient);
         return ResponseEntity.noContent().build();
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> editeazaPacient(@PathVariable("id") String id, @RequestBody Pacient pacient) {
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePacient(@PathVariable("id") String id) {
-        pacientService.stergePacient(Long.parseLong(id));
-        return ResponseEntity.noContent().build();
-    }*/
 }
