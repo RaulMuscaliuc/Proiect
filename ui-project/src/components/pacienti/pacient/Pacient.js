@@ -100,7 +100,7 @@ export default class Pacient extends React.Component {
                                     <td><b>Adresa: </b><i>{adresa}</i></td>
                                 </tr>
                                 {role === "medic" || role === "ingrijitor" ? <tr>
-                                    <Button>Editeaza date</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/editare")}>Editeaza date</Button>
                                 </tr> : ""}
                             </table>
                         </Col>

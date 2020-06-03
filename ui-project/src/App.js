@@ -20,6 +20,7 @@ import Recomandari from "./components/pacienti/pacient/recomandari/Recomandari";
 import CreareRecomandare from "./components/pacienti/pacient/recomandari/CreareRecomandare";
 import Inregistrare from "./components/auth/Inregistrare";
 import AdaugarePacient from "./components/pacienti/pacient/AdaugarePacient";
+import EditeazaDate from "./components/pacienti/pacient/EditeazaDate";
 
 export default class App extends React.Component{
     constructor(props) {
@@ -39,6 +40,7 @@ export default class App extends React.Component{
                                 <PrivateRoute path="/pacienti" exact={true} component={Pacienti}/>
                                 <PrivateRoute path="/pacienti/adaugare" exact={true} component={AdaugarePacient}/>
                                 <PrivateRoute path="/pacienti/:id" exact={true} component={Pacient}/>
+                                <PrivateRoute path="/pacienti/:id/editare" exact={true} component={EditeazaDate}/>
                                 <PrivateRoute path="/pacienti/:id/grafice" exact={true} component={Grafic}/>
                                 <PrivateRoute path="/pacienti/:id/tratament" exact={true} component={CreareTratament}/>
                                 <PrivateRoute path="/pacienti/:id/tratamente" exact={true} component={Tratamente}/>

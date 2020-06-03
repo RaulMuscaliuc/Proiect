@@ -1,5 +1,4 @@
 import React from "react";
-import {InputGroup} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
@@ -140,7 +139,7 @@ export default class AdaugarePacient extends React.Component {
                             <Form.Label><b>Varsta</b></Form.Label>
                             <Form.Control name="username" value={varsta}
                                           onChange={data => this.setState({varsta: data.target.value})} type="text"
-                                          placeholder="Introdu rolul"/>
+                                          placeholder="Introdu varsta"/>
                         </Form.Group>
                     </Col>
                     <Col></Col>
