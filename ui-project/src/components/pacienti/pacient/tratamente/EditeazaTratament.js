@@ -34,6 +34,10 @@ export default class EditeazaTratament extends React.Component {
     }
 
     render() {
+        let role = "";
+        if (localStorage.length === 1) {
+            role = JSON.parse(localStorage.getItem("user")).role;
+        }
         const {seIncarca, id, pacient, observatiiMedic, observatiiIngrijitor, oraRezolvare, rezolvat} = this.state;
         let bifat = false;
 
@@ -64,12 +68,15 @@ export default class EditeazaTratament extends React.Component {
             <div className={"editeazaTratemente"}>
                 <h3>Tratament</h3>
                 <Form.Group>
-                    <Form.Label>Observatiile medicului</Form.Label>
-                    <Form.Control as="textarea" row="3" value={observatiiMedic} onChange={data => this.setState({observatiiMedic: data.target.value}) }/>
+                    <Form.Label><b>Observatiile medicului</b></Form.Label>
+                    {role === "medic" ? <Form.Control as="textarea" row="3" value={observatiiMedic} onChange={data => this.setState({observatiiMedic: data.target.value}) }/> :
+                    <p>{observatiiMedic}</p>}
+
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Observatiile ingrijitorului</Form.Label>
-                    <Form.Control as="textarea" row="3" value={observatiiIngrijitor} onChange={data => this.setState({observatiiIngrijitor: data.target.value})}/>
+                    <Form.Label><b>Observatiile ingrijitorului</b></Form.Label>
+                    {role === "ingrijitor" ? <Form.Control as="textarea" row="3" value={observatiiIngrijitor} onChange={data => this.setState({observatiiIngrijitor: data.target.value})}/> :
+                    <p>{observatiiIngrijitor}</p>}
                 </Form.Group>
                 <Form className="bifa">
                     <div key={`default-checkbox`} className="mb-3">

@@ -49,7 +49,13 @@ export default class Pacient extends React.Component {
 
     render() {
         const id = this.props.match.params.id;
-        const {seIncarca, nume, prenume, varsta, cnp, adresa, diagnostice, tratamente, alergii, recomandari,dateFiziologice, dateAmbientale } = this.state;
+        let role = "";
+        if (localStorage.length === 1) {
+            role = JSON.parse(localStorage.getItem("user")).role;
+        }
+        const {seIncarca, nume, prenume, varsta, cnp, adresa, diagnostice, tratamente, alergii, recomandari, dateFiziologice, dateAmbientale} = this.state;
+
+
         if (seIncarca) {
             return <p align='center'>Se incarca...</p>
         }
@@ -100,15 +106,19 @@ export default class Pacient extends React.Component {
                             <table>
                                 <tr>
                                     <ul>
-                                        <li><b>Tensiune: </b> {dateFiziologice[dateFiziologice.length - 1].tensiune}</li>
+                                        <li><b>Tensiune: </b> {dateFiziologice[dateFiziologice.length - 1].tensiune}
+                                        </li>
                                         <li><b>Puls: </b>{dateFiziologice[dateFiziologice.length - 1].puls}</li>
-                                        <li><b>Temperatura: </b>{dateFiziologice[dateFiziologice.length - 1].temperatura}</li>
+                                        <li>
+                                            <b>Temperatura: </b>{dateFiziologice[dateFiziologice.length - 1].temperatura}
+                                        </li>
                                         <li><b>Greutate: </b>{dateFiziologice[dateFiziologice.length - 1].greutate}</li>
                                         <li><b>Glicemie: </b>{dateFiziologice[dateFiziologice.length - 1].glicemie}</li>
                                     </ul>
                                 </tr>
                                 <tr>
-                                    <Button onClick={() => this.props.history.push(id + "/grafice")}>Vezi grafic istoric</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/grafice")}>Vezi grafic
+                                        istoric</Button>
                                 </tr>
                             </table>
                         </Col>
@@ -116,12 +126,14 @@ export default class Pacient extends React.Component {
                             <h1>Tratamente</h1>
                             <table>
                                 <tr>
-                                    <Button onClick={() => this.props.history.push(id + "/tratamente")}>Vezi tratamente pacient</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/tratamente")}>Vezi tratamente
+                                        pacient</Button>
                                 </tr>
                                 <br/>
-                                <tr>
-                                    <Button onClick={() => this.props.history.push(id + "/tratament")}>Tratament nou</Button>
-                                </tr>
+                                {role === "medic" ? <tr>
+                                    <Button onClick={() => this.props.history.push(id + "/tratament")}>Tratament
+                                        nou</Button>
+                                </tr> : ""}
                             </table>
                         </Col>
                     </Row>
@@ -140,7 +152,8 @@ export default class Pacient extends React.Component {
                                 <tr>
                                     <ul>
                                         <li><b>Lumina: </b> {dateA.lumina}</li>
-                                        <li><b>Temperatura: </b>{dateAmbientale[dateAmbientale.length - 1].temperatura}</li>
+                                        <li><b>Temperatura: </b>{dateAmbientale[dateAmbientale.length - 1].temperatura}
+                                        </li>
                                         <li><b>Gaz: </b>{dateA.gaz}</li>
                                         <li><b>Umiditate: </b>{dateA.umiditate}</li>
                                         <li><b>Proximitate: </b>{dateA.proximitate}</li>
@@ -152,12 +165,15 @@ export default class Pacient extends React.Component {
                             <h1>Recomandari</h1>
                             <table>
                                 <tr>
-                                    <Button onClick={() => this.props.history.push(id + "/recomandari")}>Vezi recomandari pacient</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/recomandari")}>Vezi
+                                        recomandari pacient</Button>
                                 </tr>
                                 <br/>
-                                <tr>
-                                    <Button onClick={() => this.props.history.push(id + "/recomandare")}>Recomandare noua</Button>
-                                </tr>
+                                {role === "medic" ? <tr>
+                                    <Button onClick={() => this.props.history.push(id + "/recomandare")}>Recomandare
+                                        noua</Button>
+                                </tr> : ""}
+
                             </table>
                         </Col>
                     </Row>

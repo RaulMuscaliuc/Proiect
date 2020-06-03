@@ -24,6 +24,10 @@ export default class Tratamente extends React.Component {
     }
 
     render() {
+        let role = "";
+        if (localStorage.length === 1) {
+            role = JSON.parse(localStorage.getItem("user")).role;
+        }
         const {seIncarca, tratamente} = this.state;
 
         if (seIncarca) {
@@ -47,9 +51,10 @@ export default class Tratamente extends React.Component {
                 </Form>
                 <p><b>Ora rezolvarii:</b> {tratament.oraRezolvare}</p>
                 <br/>
-                <Button variant="primary" type="submit" onClick={() => this.props.history.push("/pacienti/" + this.props.match.params.id + "/tratamente/" + tratament.id)}>
+                {role === "medic" || role === "ingrijitor" ? <Button variant="primary" type="submit"
+                                                                     onClick={() => this.props.history.push("/pacienti/" + this.props.match.params.id + "/tratamente/" + tratament.id)}>
                     Modifica
-                </Button>
+                </Button> : ""}
                 <br/>
                 <br/>
             </div>
