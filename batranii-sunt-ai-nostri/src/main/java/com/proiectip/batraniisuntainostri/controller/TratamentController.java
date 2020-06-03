@@ -22,15 +22,24 @@ public class TratamentController {
         return ResponseEntity.ok(tratamentService.gasesteTratamente(Long.parseLong(pacientId)));
     }
 
-   /* @GetMapping("/tratamente/{id}")
-    public ResponseEntity<Tratament> gasesteTratament(@PathVariable("id") String id) {
+    @GetMapping("/tratamente/{id}")
+    public ResponseEntity<Tratament> gasesteTratament(@PathVariable("id") String id) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(tratamentService.gasesteTratament(Long.parseLong(id)));
     }
 
+    @CrossOrigin
     @PutMapping("/tratamente")
-    public ResponseEntity<Void> gasesteTratament(@RequestBody Tratament tratament) {
+    public ResponseEntity<Void> modificaTratament(@RequestBody Tratament tratament) throws ExecutionException, InterruptedException {
+        tratamentService.modificaTratament(tratament);
+        return ResponseEntity.noContent().build();
+    }
+
+    @CrossOrigin
+    @PostMapping("/pacienti/{id}/tratament")
+    public ResponseEntity<Void> salveazaTratament(@PathVariable("id") String id,
+                                                  @RequestBody Tratament tratament) throws ExecutionException, InterruptedException {
         tratamentService.salveazaTratament(tratament);
         return ResponseEntity.noContent().build();
-    }*/
+    }
 
 }

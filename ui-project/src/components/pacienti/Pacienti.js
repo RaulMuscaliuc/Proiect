@@ -13,7 +13,10 @@ export default class Pacienti extends React.Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('pacienti')
+        let role = JSON.parse(localStorage.getItem('user')).role;
+        let id = JSON.parse(localStorage.getItem('user')).id;
+
+        fetch('pacienti/?role=' + role + '&id=' + id)
             .then(response => response.json())
             .then(data => this.setState({pacienti: data, seIncarca: false}));
     }

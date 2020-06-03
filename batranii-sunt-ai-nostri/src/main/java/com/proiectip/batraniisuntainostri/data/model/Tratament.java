@@ -1,9 +1,5 @@
 package com.proiectip.batraniisuntainostri.data.model;
 
-import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
-
-import javax.persistence.*;
-
 public class Tratament {
 
     private long id;
@@ -17,6 +13,10 @@ public class Tratament {
     private int oraRezolvare;
 
     private boolean rezolvat;
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getId() {
         return id;
@@ -54,7 +54,7 @@ public class Tratament {
         this.oraRezolvare = oraRezolvare;
     }
 
-    public boolean isRezolvat() {
+    public boolean getRezolvat() {
         return rezolvat;
     }
 

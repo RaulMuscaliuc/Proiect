@@ -58,7 +58,7 @@ export default class Tratamente extends React.Component {
         return (
             <div>
                 <h1 align="center">Tratamente</h1>
-                <div>{listaTratamente}</div>
+                <div align={"center"}>{listaTratamente}</div>
                 <br/>
                 <br/>
             </div>

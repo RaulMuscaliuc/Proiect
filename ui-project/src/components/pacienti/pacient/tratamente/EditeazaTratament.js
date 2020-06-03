@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {Button, Form} from "react-bootstrap";
+import './Editeaza.css'
 
 export default class EditeazaTratament extends React.Component {
     constructor(props) {
@@ -23,6 +24,7 @@ export default class EditeazaTratament extends React.Component {
                 this.setState({
                     seIncarca: false,
                     id: this.props.match.params.tratamentId,
+                    pacient: this.props.match.params.id,
                     observatiiMedic: response.data.observatiiMedic,
                     observatiiIngrijitor: response.data.observatiiIngrijitor,
                     oraRezolvare: response.data.oraRezolvare,
@@ -32,7 +34,7 @@ export default class EditeazaTratament extends React.Component {
     }
 
     render() {
-        const {seIncarca, id, observatiiMedic, observatiiIngrijitor, oraRezolvare, rezolvat} = this.state;
+        const {seIncarca, id, pacient, observatiiMedic, observatiiIngrijitor, oraRezolvare, rezolvat} = this.state;
         let bifat = false;
 
         if (seIncarca) {
@@ -40,12 +42,16 @@ export default class EditeazaTratament extends React.Component {
         }
 
         function modificaTratamentul() {
+            console.log(bifat);
             axios({
                 method: 'put',
                 url: "http://localhost:8080/api/tratamente",
-                headers: {},
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
                 data: {
                     id: id,
+                    pacient: pacient,
                     observatiiMedic: observatiiMedic,
                     observatiiIngrijitor: observatiiIngrijitor,
                     oraRezolvare: oraRezolvare,
@@ -55,24 +61,24 @@ export default class EditeazaTratament extends React.Component {
         }
 
         return(
-            <div>
+            <div className={"editeazaTratemente"}>
                 <h3>Tratament</h3>
                 <Form.Group>
                     <Form.Label>Observatiile medicului</Form.Label>
-                    <Form.Control as="textarea" row="3" value={observatiiMedic} onChange={data => this.setState({observatiiMedic: data})}/>
+                    <Form.Control as="textarea" row="3" value={observatiiMedic} onChange={data => this.setState({observatiiMedic: data.target.value}) }/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Observatiile ingrijitorului</Form.Label>
-                    <Form.Control as="textarea" row="3" value={observatiiIngrijitor} onChange={data => this.setState({observatiiIngrijitor: data})}/>
+                    <Form.Control as="textarea" row="3" value={observatiiIngrijitor} onChange={data => this.setState({observatiiIngrijitor: data.target.value})}/>
                 </Form.Group>
-                <Form>
+                <Form className="bifa">
                     <div key={`default-checkbox`} className="mb-3">
                         <Form.Check type="checkbox" id={`default-checkbox`} label="Rezolvat?" onChange={() => bifat = !bifat}/>
                     </div>
                 </Form>
-                <Form.Control size="sm" type="text" placeholder="Ora rezolvarii" onChange={data => this.setState({oraRezolvare: data})}/>
+                <Form.Control className={"ora"} size="sm" type="text" placeholder="Ora rezolvarii" onChange={data => this.setState({oraRezolvare: data.target.value})}/>
                 <br/>
-                <Button variant="primary" type="submit" onClick={() => modificaTratamentul()}>
+                <Button variant="primary" type="submit" onClick={() => { modificaTratamentul(); window.location.replace("/pacienti/" + pacient + "/tratamente")}}>
                     Salveaza
                 </Button>
             </div>

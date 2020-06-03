@@ -120,7 +120,7 @@ export default class Pacient extends React.Component {
                                 </tr>
                                 <br/>
                                 <tr>
-                                    <Button>Tratament nou</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/tratament")}>Tratament nou</Button>
                                 </tr>
                             </table>
                         </Col>

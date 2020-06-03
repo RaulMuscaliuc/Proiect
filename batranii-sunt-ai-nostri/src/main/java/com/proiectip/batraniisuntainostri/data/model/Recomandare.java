@@ -8,13 +8,51 @@ public class Recomandare {
 
     private long Id;
 
-    private Pacient pacient;
+    private long pacient;
 
-    public Pacient getPacient() {
+    private String tipRecomandare;
+
+    private String indicatii;
+
+    private int durataZilnica;
+
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    public String getTipRecomandare() {
+        return tipRecomandare;
+    }
+
+    public void setTipRecomandare(String tipRecomandare) {
+        this.tipRecomandare = tipRecomandare;
+    }
+
+    public String getIndicatii() {
+        return indicatii;
+    }
+
+    public void setIndicatii(String indicatii) {
+        this.indicatii = indicatii;
+    }
+
+    public int getDurataZilnica() {
+        return durataZilnica;
+    }
+
+    public void setDurataZilnica(int durataZilnica) {
+        this.durataZilnica = durataZilnica;
+    }
+
+    public long getPacient() {
         return pacient;
     }
 
-    public void setPacient(Pacient pacient) {
+    public void setPacient(long pacient) {
         this.pacient = pacient;
     }
 }

@@ -1,9 +1,7 @@
 package com.proiectip.batraniisuntainostri.service;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import com.proiectip.batraniisuntainostri.data.model.Tratament;
 import org.springframework.stereotype.Service;
@@ -41,11 +39,54 @@ public class TratamentService {
         return tratamente;
     }
 
-    /*public Tratament gasesteTratament(final long id) {
-        return tratamentRepo.findByid(id);
+    public Tratament gasesteTratament(final long id) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        Iterable<DocumentReference> documentReferences= dbFirestore.collection("tratamente").listDocuments();
+
+        Tratament tratament = null;
+
+        for (DocumentReference reference: documentReferences) {
+            ApiFuture<DocumentSnapshot> future = reference.get();
+            DocumentSnapshot document = future.get();
+
+            if (document.exists() && Objects.requireNonNull(document.toObject(Tratament.class)).getId() == id ) {
+                tratament = document.toObject(Tratament.class);
+            }
+        }
+
+        return tratament;
     }
 
-    public void salveazaTratament(final Tratament tratament) {
-        tratamentRepo.save(tratament);
-    }*/
+    public void modificaTratament(final Tratament tratament) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        Iterable<DocumentReference> documentReferences= dbFirestore.collection("tratamente").listDocuments();
+
+        for (DocumentReference reference: documentReferences) {
+            ApiFuture<DocumentSnapshot> future = reference.get();
+            DocumentSnapshot document = future.get();
+
+            if (document.exists() && Objects.requireNonNull(document.toObject(Tratament.class)).getId() == tratament.getId()) {
+                ApiFuture<WriteResult> update = document.getReference().set(tratament);
+            }
+        }
+    }
+
+    public void salveazaTratament(final Tratament tratament) throws ExecutionException, InterruptedException {
+
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        CollectionReference collectionReferences= dbFirestore.collection("tratamente");
+
+        Iterable<DocumentReference> documentReferences= dbFirestore.collection("tratamente").listDocuments();
+
+        for (DocumentReference reference: documentReferences) {
+            ApiFuture<DocumentSnapshot> future = reference.get();
+            DocumentSnapshot document = future.get();
+
+            if (document.exists() && Objects.requireNonNull(document.toObject(Tratament.class)).getId() > tratament.getId()){
+                tratament.setId(Objects.requireNonNull(document.toObject(Tratament.class)).getId());
+            }
+        }
+
+        collectionReferences.add(tratament);
+    }
 }
