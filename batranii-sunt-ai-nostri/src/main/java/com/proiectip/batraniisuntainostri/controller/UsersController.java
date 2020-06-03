@@ -3,10 +3,7 @@ package com.proiectip.batraniisuntainostri.controller;
 import com.proiectip.batraniisuntainostri.data.model.Users;
 import com.proiectip.batraniisuntainostri.service.UsersService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.ExecutionException;
 
@@ -24,5 +21,14 @@ public class UsersController {
     public ResponseEntity<Users> verificaDate(@RequestParam("username") String username,
                                               @RequestParam("password") String password) throws ExecutionException, InterruptedException {
         return ResponseEntity.ok(usersService.verificaDateLogin(username, password));
+    }
+
+    @CrossOrigin
+    @PostMapping("/inregistreaza")
+    public ResponseEntity<Void> adaugaUser(@RequestParam("username") String username,
+                                           @RequestParam("password") String password,
+                                           @RequestBody Users users) throws ExecutionException, InterruptedException {
+        usersService.adaugaUser(users);
+        return ResponseEntity.noContent().build();
     }
 }

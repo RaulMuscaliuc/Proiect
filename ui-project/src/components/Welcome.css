@@ -1,3 +1,10 @@
 .homeImg {
     width: 70px;
 }
+
+.descriere{
+    color: white;
+    font-size: larger;
+    margin-left: 20%;
+    margin-right: 20%;
+}

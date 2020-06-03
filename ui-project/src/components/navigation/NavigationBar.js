@@ -8,6 +8,7 @@ const Styles = styled.div``;
 const data = localStorage;
 let show = false;
 let user;
+console.log(data);
 if(data.length === 1) {
      show = true;
      user = JSON.parse(localStorage.getItem('user'));

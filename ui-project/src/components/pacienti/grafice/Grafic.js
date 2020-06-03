@@ -18,6 +18,7 @@ export default class Grafic extends React.Component {
 
         axios.get("http://localhost:8080/api/ambientale/" + this.props.match.params.id)
             .then(response => {
+                console.log(response.data)
                 this.setState({
                     seIncarca: false,
                     dateFiziologice: response.data

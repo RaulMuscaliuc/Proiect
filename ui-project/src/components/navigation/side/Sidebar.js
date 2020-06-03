@@ -11,20 +11,6 @@ class SideNav extends React.Component {
         super(props);
         this.state = {
             activePath: '/',
-            items: [
-                {
-                    path: '/', /* path is used as id to check which NavItem is active basically */
-                    name: 'Home',
-                    css: 'fa fa-fw fa-home',
-                    key: 1, /* Key is required, else console throws error. Does this please you Mr. Browser?! */
-                },
-                {
-                    path: '/pacienti',
-                    name: 'Lista pacienti',
-                    css: 'fas fa-archive',
-                    key: 2,
-                },
-            ]
         }
     }
 
@@ -35,16 +21,21 @@ class SideNav extends React.Component {
     render() {
         let role = "";
         let id;
-        if(localStorage.length === 1) {
+        if (localStorage.length === 1) {
             role = JSON.parse(localStorage.getItem('user')).role;
             id = JSON.parse(localStorage.getItem('user')).id;
         }
         return (
             <StyledSideNav className='sideBar'>
                 <NavItem path='/' name='Home' css='fa fa-fw fa-home' onItemClick={this.onItemClick} key='1'/>
-                <NavItem path={role === 'pacient' ? '/pacienti/' + id : '/pacienti'}
-                         name='Home' css='fas fa-archive' onItemClick={this.onItemClick} key='1'/>
-                )
+                {role === "admin" ? <NavItem path='/inregistrare' name='Inregistrare' css='fa fa-address-book'
+                                             onItemClick={this.onItemClick} key='3'/> :
+                    <NavItem path={role === 'pacient' ? '/pacienti/' + id : '/pacienti'}
+                             name='Home' css='fas fa-archive' onItemClick={this.onItemClick} key='2'/>
+                }
+                {role === "medic" ? <NavItem path="/pacienti/adaugare"
+                                             name='Home' css='fa fa-address-book' onItemClick={this.onItemClick} key='3'/> : ""}
+
             </StyledSideNav>
         );
     }

@@ -18,6 +18,8 @@ import {PrivateRoute} from "./components/auth/PrivateRoute"
 import CreareTratament from "./components/pacienti/pacient/tratamente/CreareTratament";
 import Recomandari from "./components/pacienti/pacient/recomandari/Recomandari";
 import CreareRecomandare from "./components/pacienti/pacient/recomandari/CreareRecomandare";
+import Inregistrare from "./components/auth/Inregistrare";
+import AdaugarePacient from "./components/pacienti/pacient/AdaugarePacient";
 
 export default class App extends React.Component{
     constructor(props) {
@@ -35,6 +37,7 @@ export default class App extends React.Component{
                             <Switch>
                                 <PrivateRoute path="/" exact={true} component={Welcome}/>
                                 <PrivateRoute path="/pacienti" exact={true} component={Pacienti}/>
+                                <PrivateRoute path="/pacienti/adaugare" exact={true} component={AdaugarePacient}/>
                                 <PrivateRoute path="/pacienti/:id" exact={true} component={Pacient}/>
                                 <PrivateRoute path="/pacienti/:id/grafice" exact={true} component={Grafic}/>
                                 <PrivateRoute path="/pacienti/:id/tratament" exact={true} component={CreareTratament}/>
@@ -43,6 +46,7 @@ export default class App extends React.Component{
                                 <PrivateRoute path="/pacienti/:id/recomandari" exact={true} component={Recomandari}/>
                                 <PrivateRoute path="/pacienti/:id/recomandare" exact={true} component={CreareRecomandare}/>
                                 <Route path="/login" component={Login} />
+                                <Route path="/inregistrare" component={Inregistrare}/>
                             </Switch>
                         </Col>
                     </Row>

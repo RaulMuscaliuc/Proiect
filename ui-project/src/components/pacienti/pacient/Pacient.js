@@ -99,6 +99,9 @@ export default class Pacient extends React.Component {
                                 <tr>
                                     <td><b>Adresa: </b><i>{adresa}</i></td>
                                 </tr>
+                                {role === "medic" || role === "ingrijitor" ? <tr>
+                                    <Button>Editeaza date</Button>
+                                </tr> : ""}
                             </table>
                         </Col>
                         <Col>
@@ -144,6 +147,9 @@ export default class Pacient extends React.Component {
                                 <tr>
                                     <ul>{listaDiagnostice}</ul>
                                 </tr>
+                                {role === "medic" || role === "ingrijitor" ? <tr>
+                                    <Button>Editeaza diagnostice</Button>
+                                </tr> : ""}
                             </table>
                         </Col>
                         <Col>
@@ -184,6 +190,9 @@ export default class Pacient extends React.Component {
                                 <tr>
                                     <ul>{listaAlergii}</ul>
                                 </tr>
+                                {role === "medic" || role === "ingrijitor" ? <tr>
+                                    <Button>Editeaza alergii</Button>
+                                </tr> : ""}
                             </table>
                         </Col>
                     </Row>
