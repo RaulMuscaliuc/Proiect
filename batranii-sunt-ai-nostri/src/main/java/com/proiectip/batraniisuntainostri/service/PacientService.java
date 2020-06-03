@@ -72,6 +72,7 @@ public class PacientService {
     }
 
     public Pacient getOne(long id) throws ExecutionException, InterruptedException {
+        dateAmbientaleService.creazaDateAmbientale();
         Firestore dbFirestore = FirestoreClient.getFirestore();
         Iterable<DocumentReference> documentReferences= dbFirestore.collection("pacienti").listDocuments();
 

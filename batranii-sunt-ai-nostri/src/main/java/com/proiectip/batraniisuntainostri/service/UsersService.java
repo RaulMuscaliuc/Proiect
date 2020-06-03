@@ -49,7 +49,7 @@ public class UsersService {
             if (document.exists()
                     && Objects.requireNonNull(document.toObject(Users.class)).getRole().equals(user.getRole())
                     && Objects.requireNonNull(document.toObject(Users.class)).getId() > user.getId()){
-                user.setId(Objects.requireNonNull(document.toObject(Tratament.class)).getId() + 1);
+                user.setId(Objects.requireNonNull(document.toObject(Users.class)).getId() + 1);
             }
         }
 

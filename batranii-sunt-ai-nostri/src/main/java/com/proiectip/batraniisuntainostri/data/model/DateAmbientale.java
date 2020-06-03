@@ -11,15 +11,19 @@ public  class DateAmbientale {
 
     private long pacient;
 
-    private boolean lumina;
+    private String lumina;
 
-    private int temperatura;
+    private float temperatura;
 
-    private boolean gaz;
+    private String gaz;
 
-    private boolean umiditate;
+    private float umiditate;
 
-    private boolean proximitate;
+    private String proximitate;
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getId() {
         return id;
@@ -33,43 +37,43 @@ public  class DateAmbientale {
         this.pacient = pacient;
     }
 
-    public boolean isLumina() {
+    public String getLumina() {
         return lumina;
     }
 
-    public void setLumina(boolean lumina) {
+    public void setLumina(String lumina) {
         this.lumina = lumina;
     }
 
-    public int getTemperatura() {
+    public float getTemperatura() {
         return temperatura;
     }
 
-    public void setTemperatura(int temperatura) {
+    public void setTemperatura(float temperatura) {
         this.temperatura = temperatura;
     }
 
-    public boolean isGaz() {
+    public String getGaz() {
         return gaz;
     }
 
-    public void setGaz(boolean gaz) {
+    public void setGaz(String gaz) {
         this.gaz = gaz;
     }
 
-    public boolean isUmiditate() {
+    public float getUmiditate() {
         return umiditate;
     }
 
-    public void setUmiditate(boolean umiditate) {
+    public void setUmiditate(float umiditate) {
         this.umiditate = umiditate;
     }
 
-    public boolean isProximitate() {
+    public String getProximitate() {
         return proximitate;
     }
 
-    public void setProximitate(boolean proximitate) {
+    public void setProximitate(String proximitate) {
         this.proximitate = proximitate;
     }
 }
