@@ -4,6 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.proiectip.batraniisuntainostri.data.model.*;
 import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
@@ -104,6 +105,20 @@ public class PacientService {
 
 
         return pacient;
+    }
+
+    public void modificaDate(Pacient pacient) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        Iterable<DocumentReference> documentReferences= dbFirestore.collection("pacienti").listDocuments();
+
+        for (DocumentReference reference: documentReferences) {
+            ApiFuture<DocumentSnapshot> future = reference.get();
+            DocumentSnapshot document = future.get();
+
+            if (document.exists() && Objects.requireNonNull(document.toObject(Pacient.class)).getId() == pacient.getId()) {
+                ApiFuture<WriteResult> update = document.getReference().set(pacient);
+            }
+        }
     }
 
  /*   public void adaugaPacient(final Pacient pacient) {

@@ -1,6 +1,7 @@
 package com.proiectip.batraniisuntainostri.service;
 
 import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
@@ -40,4 +41,24 @@ public class DiagnosticService {
 
         return diagnostice;
     }
+
+    public void salveazaDiagnostic(final Diagnostic diagnostic) throws ExecutionException, InterruptedException {
+
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        CollectionReference collectionReferences= dbFirestore.collection("diagnostice");
+
+        Iterable<DocumentReference> documentReferences= dbFirestore.collection("diagnostice").listDocuments();
+
+        for (DocumentReference reference: documentReferences) {
+            ApiFuture<DocumentSnapshot> future = reference.get();
+            DocumentSnapshot document = future.get();
+
+            if (document.exists() && Objects.requireNonNull(document.toObject(Diagnostic.class)).getId() >= diagnostic.getId()){
+                diagnostic.setId(Objects.requireNonNull(document.toObject(Diagnostic.class)).getId());
+            }
+        }
+
+        collectionReferences.add(diagnostic);
+    }
 }
+

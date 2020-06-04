@@ -148,7 +148,7 @@ export default class Pacient extends React.Component {
                                     <ul>{listaDiagnostice}</ul>
                                 </tr>
                                 {role === "medic" || role === "ingrijitor" ? <tr>
-                                    <Button>Editeaza diagnostice</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/diagnostic")}>Editeaza diagnostice</Button>
                                 </tr> : ""}
                             </table>
                         </Col>
@@ -191,7 +191,7 @@ export default class Pacient extends React.Component {
                                     <ul>{listaAlergii}</ul>
                                 </tr>
                                 {role === "medic" || role === "ingrijitor" ? <tr>
-                                    <Button>Editeaza alergii</Button>
+                                    <Button onClick={() => this.props.history.push(id + "/alergie")}>Editeaza alergii</Button>
                                 </tr> : ""}
                             </table>
                         </Col>

@@ -21,7 +21,7 @@ export default class AdaugarePacient extends React.Component {
             cnp: "",
             ingrijitor: "",
             supraveghetor: "",
-            medic: 0
+            medic: 1
         }
     }
 

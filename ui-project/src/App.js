@@ -21,6 +21,8 @@ import CreareRecomandare from "./components/pacienti/pacient/recomandari/CreareR
 import Inregistrare from "./components/auth/Inregistrare";
 import AdaugarePacient from "./components/pacienti/pacient/AdaugarePacient";
 import EditeazaDate from "./components/pacienti/pacient/EditeazaDate";
+import CreareDiagnostic from "./components/pacienti/pacient/diagnostice/CreareDiagnostic";
+import CreareAlergie from "./components/pacienti/pacient/alergii/CreareAlergie";
 
 export default class App extends React.Component{
     constructor(props) {
@@ -42,6 +44,8 @@ export default class App extends React.Component{
                                 <PrivateRoute path="/pacienti/:id" exact={true} component={Pacient}/>
                                 <PrivateRoute path="/pacienti/:id/editare" exact={true} component={EditeazaDate}/>
                                 <PrivateRoute path="/pacienti/:id/grafice" exact={true} component={Grafic}/>
+                                <PrivateRoute path="/pacienti/:id/diagnostic" exact={true} component={CreareDiagnostic}/>
+                                <PrivateRoute path="/pacienti/:id/alergie" exact={true} component={CreareAlergie}/>
                                 <PrivateRoute path="/pacienti/:id/tratament" exact={true} component={CreareTratament}/>
                                 <PrivateRoute path="/pacienti/:id/tratamente" exact={true} component={Tratamente}/>
                                 <PrivateRoute path="/pacienti/:id/tratamente/:tratamentId" exact={true} component={EditeazaTratament}/>

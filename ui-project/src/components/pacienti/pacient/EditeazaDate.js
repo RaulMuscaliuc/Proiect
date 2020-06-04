@@ -39,27 +39,26 @@ export default class EditeazaDate extends React.Component {
         const {nume, prenume, varsta, adresa, cnp} = this.state;
 
 
-        /*function inregistreaza() {
+        function salveaza() {
             axios({
                 method: 'post',
-                url: "http://localhost:8080/api/inregistreaza?username=" + username + "&password=" + password,
+                url: "http://localhost:8080/api/pacienti/adauga",
                 headers: {
                     'Access-Control-Allow-Origin': '*'
                 },
                 data: {
-                    id: 0,
+                    id: 1,
                     nume: nume,
                     prenume: prenume,
                     varsta: varsta,
                     adresa: adresa,
                     cnp: cnp,
-                    ingrijitor: ingrijitor,
-                    supraveghetor: supraveghetor,
-                    medic: localStorage.getItem("user").id
-
+                    ingrijitor: 2,
+                    supraveghetor: 1,
+                    medic: 1
                 }
             })
-        }*/
+        }
 
         return (
             <div className="adaugare">
@@ -113,7 +112,7 @@ export default class EditeazaDate extends React.Component {
                         </Col>
                         <Col></Col>
                         <Col>
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" onClick={() => salveaza()}>
                                 Salveaza
                             </Button>
                         </Col>

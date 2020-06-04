@@ -12,6 +12,10 @@ public class Alergie {
 
     private long pacient;
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public long getPacient() {
         return pacient;
     }

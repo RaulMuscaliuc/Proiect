@@ -31,8 +31,10 @@ public class PacientController {
         return ResponseEntity.ok(pacientService.getOne(Long.parseLong(id)));
     }
 
-    @PostMapping
-    public ResponseEntity<Void> adaugaPacient(@RequestBody Pacient pacient) {
+    @CrossOrigin
+    @PostMapping("/adauga")
+    public ResponseEntity<Void> adaugaPacient(@RequestBody Pacient pacient) throws ExecutionException, InterruptedException {
+        pacientService.modificaDate(pacient);
         return ResponseEntity.noContent().build();
     }
 }
