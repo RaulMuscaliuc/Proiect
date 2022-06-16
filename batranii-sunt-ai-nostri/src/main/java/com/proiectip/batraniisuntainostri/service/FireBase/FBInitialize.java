@@ -15,7 +15,7 @@ public class FBInitialize {
     public void initialize() {
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("C:\\Proiect-Ip\\batranii-sunt-ai-nostri\\src\\main\\java\\com\\proiectip\\batraniisuntainostri\\service\\FireBase\\proiectip.json");
+                    new FileInputStream("/Users/raulmuscaliuc/Proiect-Ip/batranii-sunt-ai-nostri/src/main/java/com/proiectip/batraniisuntainostri/service/FireBase/proiectip.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

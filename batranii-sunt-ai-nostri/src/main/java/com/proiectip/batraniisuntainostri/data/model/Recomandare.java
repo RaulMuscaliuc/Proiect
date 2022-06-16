@@ -16,6 +16,8 @@ public class Recomandare {
 
     private int durataZilnica;
 
+    private int frecventa;
+
     public long getId() {
         return Id;
     }
@@ -47,6 +49,10 @@ public class Recomandare {
     public void setDurataZilnica(int durataZilnica) {
         this.durataZilnica = durataZilnica;
     }
+
+    public int getFrecventa() {return frecventa;}
+
+    public void setFrecventa(int frecventa) {this.frecventa = frecventa;}
 
     public long getPacient() {
         return pacient;

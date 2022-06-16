@@ -17,7 +17,6 @@ public class Pacient extends Persoana {
 
     private List<DateFiziologice> dateFiziologice;
 
-    private List<DateAmbientale> dateAmbientale;
 
     private long medic;
 
@@ -93,11 +92,4 @@ public class Pacient extends Persoana {
         this.dateFiziologice = dateFiziologice;
     }
 
-    public List<DateAmbientale> getDateAmbientale() {
-        return dateAmbientale;
-    }
-
-    public void setDateAmbientale(List<DateAmbientale> dateAmbientale) {
-        this.dateAmbientale = dateAmbientale;
-    }
 }

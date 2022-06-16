@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import styled from 'styled-components';
-import './Item.scss'
+import './Item.css'
 const StyledNavItem = styled.div``;
 const NavIcon = styled.div``;
 

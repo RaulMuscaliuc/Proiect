@@ -27,7 +27,7 @@ export default class Pacient extends React.Component {
     componentDidMount() {
         this.setState({seIncarca: true});
 
-        axios.get('http://localhost:8080/api/pacienti/' + this.props.match.params.id)
+        axios.get('http://localhost:8080/pacienti/' + this.props.match.params.id)
             .then(response => {
                 console.log(response.data);
                 this.setState({
@@ -42,7 +42,6 @@ export default class Pacient extends React.Component {
                     alergii: response.data.alergii,
                     recomandari: response.data.recomandari,
                     dateFiziologice: response.data.dateFiziologice,
-                    dateAmbientale: response.data.dateAmbientale
                 })
             });
     }
@@ -69,13 +68,6 @@ export default class Pacient extends React.Component {
             const nume = alergie.nume;
             return <li><p>{nume}</p></li>
         });
-
-        const dateA = {
-            lumina: dateAmbientale[dateAmbientale.length - 1].lumina,
-            gaz: dateAmbientale[dateAmbientale.length - 1].gaz,
-            umiditate: dateAmbientale[dateAmbientale.length - 1].umiditate ,
-            proximitate: dateAmbientale[dateAmbientale.length - 1].proximitate
-        };
 
         return (
             <div>
@@ -115,8 +107,7 @@ export default class Pacient extends React.Component {
                                         <li>
                                             <b>Temperatura: </b>{dateFiziologice[dateFiziologice.length - 1].temperatura}
                                         </li>
-                                        <li><b>Greutate: </b>{dateFiziologice[dateFiziologice.length - 1].greutate}</li>
-                                        <li><b>Glicemie: </b>{dateFiziologice[dateFiziologice.length - 1].glicemie}</li>
+                                        <li><b>Umiditate: </b>{dateFiziologice[dateFiziologice.length - 1].greutate}%</li>
                                     </ul>
                                 </tr>
                                 <tr>
@@ -153,19 +144,7 @@ export default class Pacient extends React.Component {
                             </table>
                         </Col>
                         <Col>
-                            <h1>Date ambientale</h1>
-                            <table>
-                                <tr>
-                                    <ul>
-                                        <li><b>Lumina: </b> {dateA.lumina}</li>
-                                        <li><b>Temperatura: </b>{dateAmbientale[dateAmbientale.length - 1].temperatura}
-                                        </li>
-                                        <li><b>Gaz: </b>{dateA.gaz}</li>
-                                        <li><b>Umiditate: </b>{dateA.umiditate}</li>
-                                        <li><b>Proximitate: </b>{dateA.proximitate}</li>
-                                    </ul>
-                                </tr>
-                            </table>
+
                         </Col>
                         <Col>
                             <h1>Recomandari</h1>
@@ -180,19 +159,6 @@ export default class Pacient extends React.Component {
                                         noua</Button>
                                 </tr> : ""}
 
-                            </table>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <h1>Alergii</h1>
-                            <table>
-                                <tr>
-                                    <ul>{listaAlergii}</ul>
-                                </tr>
-                                {role === "medic" || role === "ingrijitor" ? <tr>
-                                    <Button onClick={() => this.props.history.push(id + "/alergie")}>Editeaza alergii</Button>
-                                </tr> : ""}
                             </table>
                         </Col>
                     </Row>

@@ -92,11 +92,9 @@ public class PacientService {
             List<Diagnostic> diagnostice = diagnosticService.gasesteDiagnostic(id);
             List<Alergie> alergii = alergiiService.gasesteAlergii(id);
             List<DateFiziologice> dateFiziologice = dateFiziologiceService.gasesteDateFiziologice(id);
-            List<DateAmbientale> dateAmbientale = dateAmbientaleService.gasesteDateAmbientale(id);
             List<Tratament> tratamente = tratamentService.gasesteTratamente(id);
 
             pacient.setTratamente(tratamente);
-            pacient.setDateAmbientale(dateAmbientale);
             pacient.setDateFiziologice(dateFiziologice);
             pacient.setDiagnostice(diagnostice);
             pacient.setAlergii(alergii);

@@ -22,10 +22,8 @@ a:hover, .navbar-nav:hover, .navbar-light:hover .nav-link:hover {
     left: 25%;
     right: 25%;
 }
-.nav-item {
-    a {
-        font-size: 1.4em !important;
-    }
+.nav-item.a {
+    font-size: 1.4em !important;
 }
 
 h4{

@@ -16,7 +16,7 @@ export default class Grafic extends React.Component {
     componentDidMount() {
         this.setState({seIncarca: true});
 
-        axios.get("http://localhost:8080/api/ambientale/" + this.props.match.params.id)
+        axios.get("http://localhost:8080/ambientale/" + this.props.match.params.id)
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -108,7 +108,7 @@ export default class Grafic extends React.Component {
         const optionsGreutate = {
             animationEnabled: true,
             title:{
-                text: "Istoric greutate"
+                text: "Istoric umiditate"
             },
             axisX: {
                 valueFormatString: "MM/DD"
@@ -153,9 +153,7 @@ export default class Grafic extends React.Component {
                 <br/>
                 <CanvasJSChart options = {optionsTemperatura}/>
                 <br/>
-                <CanvasJSChart options = {optionsGreutate}/>
-                <br/>
-                <CanvasJSChart className={"ultimGraf"} options = {optionsGlicemie}/>
+                <CanvasJSChart className={"ultimGraf"} options = {optionsGreutate}/>
                 <br/>
                 <br/>
             </div>

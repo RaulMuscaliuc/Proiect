@@ -11,7 +11,7 @@ function login(username, password) {
         method: 'GET',
     };
 
-    return fetch(`/users?username=` + username + `&password=` + password, requestOptions)
+    return fetch(`http://localhost:8080/users?username=` + username + `&password=` + password, requestOptions)
         .then(handleResponse)
         .then(user => {
             // login successful if there's a user in the response
@@ -37,7 +37,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`/users`, requestOptions).then(handleResponse);
+    return fetch(`http://localhost:8080//users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

@@ -9,6 +9,7 @@ import com.google.firebase.cloud.FirestoreClient;
 import com.proiectip.batraniisuntainostri.data.model.Tratament;
 import com.proiectip.batraniisuntainostri.data.model.Users;
 import com.proiectip.batraniisuntainostri.data.model.persoane.Pacient;
+import com.proiectip.batraniisuntainostri.data.model.persoane.Persoana;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -37,7 +38,7 @@ public class UsersService {
         return user;
     }
 
-    public void adaugaPacient(final Pacient pacient, final String username, final String password) throws ExecutionException, InterruptedException {
+    public void adaugaPacient(final Persoana pacient, final String username, final String password) throws ExecutionException, InterruptedException {
         Users user = new Users();
         user.setId(0);
         user.setUsername(username);

@@ -22,7 +22,7 @@ export default class Inregistrare extends React.Component {
         function inregistreaza() {
             axios({
                 method: 'post',
-                url: "http://localhost:8080/api/inregistreaza",
+                url: "http://localhost:8080/inregistreaza",
                 headers: {
                     'Access-Control-Allow-Origin': '*'
                 },
